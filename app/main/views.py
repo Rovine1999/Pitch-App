@@ -40,14 +40,14 @@ def new_pitch():
 
     return render_template('pitch.html',form= form)
 
-@main.route('/categories/<cate>')
-def category(cate):
+@main.route('/categories/<category>')
+def category(category):
     '''
     function to return the pitches by category
     '''
-    category = Pitches.get_pitches(cate)
+    category = Pitches.get_pitches(category)
     # print(category)
-    title = f'{cate}'
+    title = f'{category}'
     return render_template('categories.html',title = title, category = category)
 
 @main.route('/user/<uname>')
