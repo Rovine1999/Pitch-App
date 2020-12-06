@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..request import get_movies,get_pitch
+
 from .forms import ReviewForm,UpdateProfile
 from flask_login import login_required,current_user
 from .. import db,photos

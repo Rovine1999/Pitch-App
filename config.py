@@ -8,7 +8,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/watchlist'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SENDER_EMAIL = 'rovinewanjala99@gmail.com'
-
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
