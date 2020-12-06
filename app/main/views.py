@@ -97,10 +97,10 @@ def comment(id):
     '''
     function to return the comments
     '''
-    comm =Comments.get_comment(id)
-    print(comm)
+    comment =Comments.get_comment(id)
+    print(comment)
     title = 'comments'
-    return render_template('comments.html',comment = comm,title = title)
+    return render_template('comments.html',comment = comments,title = title)
 
 @main.route('/new_comment/<int:pitches_id>', methods = ['GET', 'POST'])
 @login_required
