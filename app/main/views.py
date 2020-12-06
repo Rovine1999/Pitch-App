@@ -29,7 +29,7 @@ def new_pitch():
         pitch= form.pitch.data
         title=form.title.data
 
-
+        # Updated pitchinstance
         new_pitch = Pitches(title=title,category= category,pitch= pitch,user_id=current_user.id)
 
         title='New Pitch'
@@ -97,10 +97,10 @@ def comment(id):
     '''
     function to return the comments
     '''
-    comment =Comments.get_comment(id)
-    print(comment)
+    comm =Comments.get_comment(id)
+    print(comm)
     title = 'comments'
-    return render_template('comments.html',comment = comment,title = title)
+    return render_template('comments.html',comment = comm,title = title)
 
 @main.route('/new_comment/<int:pitches_id>', methods = ['GET', 'POST'])
 @login_required
