@@ -1,98 +1,120 @@
+
 from flask import render_template,request,redirect,url_for,abort
-from . import main
-
-from .forms import ReviewForm,UpdateProfile
 from flask_login import login_required,current_user
+from ..models import Pitches,Role,User,Comments
+from . import main
+from flask import render_template
 from .. import db,photos
-import markdown2
+from .forms import PitchForm,CommentForm,UpdateProfile
 
-# Views
+
 @main.route('/')
 def index():
     '''
-    View root page function that returns the index page and its data
+    Index page
+    return
     '''
-   # Getting popular movie
-    popular_movies = get_movies('popular')
-    upcoming_movie = get_movies('upcoming')
-    now_showing_movie = get_movies('now_playing')
-    title = 'Home - Welcome to The best Movie Review Website Online'
-    search_movie = request.args.get('movie_query')
-    if search_movie:
-        return redirect(url_for('.search',movie_name=search_movie))
-    else:
-        return render_template('index.html', title = title, popular = popular_movies, upcoming = upcoming_movie, now_showing = now_showing_movie )
-# Views
-@main.route('/movie/<int:id>')
-def movie(id):
-    '''
-    View movie page function that returns the movie details page and its data
-    '''
-    movie = get_pitch(id)
-    title = f'{movie.title}'
-    reviews = Review.get_reviews(pitch.id)
-    return render_template('movie.html',title = title,movie = movie,reviews = reviews)
-@main.route('/search/<movie_name>')
-def search(movie_name):
-    '''
-    View function to display the search results
-    '''
-    movie_name_list = movie_name.split(" ")
-    movie_name_format = "+".join(movie_name_list)
-    title = f'search results for {movie_name}'
-    return render_template('search.html',movies = searched_movies)
-@main.route('/reviews/<int:id>')
-def movie_reviews(id):
-    movie = get_movie(id)
-    reviews = Review.get_reviews(id)
-    title = f'All reviews for {movie.title}'
-    return render_template('movie_reviews.html',title = title,reviews=reviews)
-@main.route('/review/<int:id>')
-def single_review(id):
-    review=Review.query.get(id)
-    if review is None:
-        abort(404)
-    format_review = markdown2.markdown(review.movie_review,extras=["code-friendly", "fenced-code-blocks"])
-    return render_template('review.html',review = review,format_review=format_review)
-@main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
+    message= "Welcome to Pitch Application!!"
+    title= 'Pitch-app!'
+    return render_template('index.html', message=message,title=title)
+
+@main.route('/pitch/', methods = ['GET','POST'])
 @login_required
-def new_review(id):
-    form = ReviewForm()
-    movie = get_pitch(id)
+def new_pitch():
+
+    form = PitchForm()
+
     if form.validate_on_submit():
-        title = form.title.data
-        review = form.review.data
-        new_review = Review(movie_id=movie.id,movie_title=title,image_path=movie.poster,movie_review=review,user=current_user)
-        new_review.save_review()
-        return redirect(url_for('.movie',id = movie.id ))
-    title = f'{movie.title} review'
-    return render_template('new_review.html',title = title, review_form=form, movie=movie)
+        category = form.category.data
+        pitch= form.pitch.data
+        title=form.title.data
+
+
+        new_pitch = Pitches(title=title,category= category,pitch= pitch,user_id=current_user.id)
+
+        title='New Pitch'
+
+        new_pitch.save_pitch()
+
+        return redirect(url_for('main.index'))
+
+    return render_template('pitch.html',form= form)
+
+@main.route('/categories/<cate>')
+def category(cate):
+    '''
+    function to return the pitches by category
+    '''
+    category = Pitches.get_pitches(cate)
+    # print(category)
+    title = f'{cate}'
+    return render_template('categories.html',title = title, category = category)
+
 @main.route('/user/<uname>')
 def profile(uname):
-    user = User.query.filter_by(username = uname).first()
+    user = User.query.filter_by(author = uname).first()
+
     if user is None:
+        
         abort(404)
+
     return render_template("profile/profile.html", user = user)
+
+
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
 def update_profile(uname):
-    user = User.query.filter_by(username = uname).first()
+    user = User.query.filter_by(author = uname).first()
     if user is None:
         abort(404)
+
     form = UpdateProfile()
+
     if form.validate_on_submit():
         user.bio = form.bio.data
+
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('.profile',uname=user.username))
+
+        return redirect(url_for('.profile',uname=user.author))
+
     return render_template('profile/update.html',form =form)
+
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
 def update_pic(uname):
-    user = User.query.filter_by(username = uname).first()
+    user = User.query.filter_by(author = uname).first()
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/comments/<id>')
+@login_required
+def comment(id):
+    '''
+    function to return the comments
+    '''
+    comment =Comments.get_comment(id)
+    print(comment)
+    title = 'comments'
+    return render_template('comments.html',comment = comment,title = title)
+
+@main.route('/new_comment/<int:pitches_id>', methods = ['GET', 'POST'])
+@login_required
+def new_comment(pitches_id):
+    pitches = Pitches.query.filter_by(id = pitches_id).first()
+    form = CommentForm()
+
+    if form.validate_on_submit():
+        comment = form.comment.data
+
+        new_comment = Comments(comment=comment,user_id=current_user.id, pitches_id=pitches_id)
+
+        new_comment.save_comment()
+
+        return redirect(url_for('main.index'))
+    title='New Pitch'
+    return render_template('new_comment.html',title=title,comment_form = form,pitches_id=pitches_id)
