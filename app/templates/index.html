@@ -1,22 +1,54 @@
-{% extends 'base.html'%} 
-{% import 'macros.html' as macro%}
-
-
-<!-- Styles block -->
-
-{% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% extends 'base.html'%}
+{% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> 
 {% endblock %}
-    
-<!-- Content block -->
+
 {% block content %}
+<div class="jumbotron" style="margin-top:0;">
+  <h2 class="text-center" ><u>WELCOME TO PITCH</u></h2>
+  <p class="text-center"><i>Here, you have only sixty seconds can count in your life, its upon you to make it come through</i></p>
+</div> 
 
-<div class="container">
-    <form>
-        <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
-    </form>
+<body >
 
-</div>
-    
+  <div class="container">  
+    <div class="d-flex justify-content-center row">
+      <div class="card-groups">
+        <div class="card border-info mb-3 col-md-4" style="max-width: 35rem;">          
+          <div class="card-body">
+            <h5 class="card-title"><u>Production Pitch</u></h5>
+            <p class="card-text">As a man, unless you go out and toil for yourself and your family or you end up leading the poorest future....!!!!</p>
+            <button type="button" class="btn btn-outline-success"><a href="../pitch/">Add  new Pitch</a></button><br><br>
+            <button type="button" class="btn btn-outline-success"><a href="/categories/Product">Read More</a></button>
+          </div>
+        </div>
+
+        <div class="card border-info mb-3 col-md-4" style="max-width: 35rem;">         
+          <div class="card-body">
+            <h5 class="card-title" ><u>Adverting Pitch</u></h5>
+            <p class="card-text"> Simplicity is the ultimate sophistication.</p><br>
+            <p class="card-text"> If you want to understand how a lion hunts, don’t go to the zoo. Go to the jungle.</p><br>
+            <p class="card-text"> Your brand is a story unfolding across all customer touch points.</p><br>
+            <p class="card-text"> Simplicity is the ultimate sophistication.</p><br>
+            <p class="card-text"> Simplicity is the ultimate sophistication.</p><br>
+            <p class="card-text"> Simplicity is the ultimate sophistication.</p><br>
+            <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add new Pitch</a></button><br><br>
+            <button type="button" class="btn btn-outline-primary"><a href="/categories/Adverts">Read More</a></button>
+          </div>
+        </div>
+
+        <div class="card border-info mb-3 col-md-4" style="max-width: 35rem;">          
+          <div class="card-body">
+            <h5 class="card-title" >Interview Pitch</h5>
+            <p class="card-text">The average person puts only 25% of his energy into his work.
+              The world takes off its hat to those who put in more than 50% of their capacity,
+              and stands on its head for those few and far between souls who devote 100%.</p>
+              <button type="button" class="btn btn-outline-primary"><a href="../pitch/">Add new Pitch</a></button><br><br>
+            <button type="button" class="btn btn-outline-primary"><a href="/categories/Interview">Read More</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+  {% endblock%}
