@@ -30,7 +30,7 @@ def new_pitch():
         title=form.title.data
 
         # Updated pitchinstance
-        new_pitch = Pitches(title=title,category= category,pitch= pitch,user_id=current_user.id)
+        new_pitch = Pitches(title=title,category= category1,pitch= pitch,user_id=current_user.id)
 
         title='New Pitch'
 
@@ -38,17 +38,17 @@ def new_pitch():
 
         return redirect(url_for('main.index'))
 
-    return render_template('pitch.html',form= form)
+    return render_template('new_pitch.html',form= form)
 
-@main.route('/categories/<category>')
-def category(category):
+@main.route('/categories/<category1>')
+def category(category1):
     '''
     function to return the pitches by category
     '''
-    category = Pitches.get_pitches(category)
+    category = Pitches.get_pitches(category1)
     # print(category)
-    title = f'{category}'
-    return render_template('categories.html',title = title, category = category)
+    title = f'{category1}'
+    return render_template('categories.html',title = title, category = category1)
 
 @main.route('/user/<uname>')
 def profile(uname):

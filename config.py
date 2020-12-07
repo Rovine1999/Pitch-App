@@ -2,11 +2,11 @@ import os
 
 class Config:
 
-    MOVIE_API_BASE_URL ='https://api.themoviedb.org/3/movie/{}?api_key={}'
+    
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SENDER_EMAIL = 'rovinewanjala99@gmail.com'
+    SENDER_EMAIL = 'akinyisydney705@gmail.com'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -24,10 +24,10 @@ class ProdConfig(Config):
 
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
     DEBUG = True
 
 config_options = {
