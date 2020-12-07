@@ -29,7 +29,7 @@ def new_pitch():
         pitch= form.pitch.data
         title=form.title.data
 
-        # Updated pitchinstance
+        # Updated pitch instance
         new_pitch = Pitches(title=title,category= category,pitch= pitch,user_id=current_user.id)
 
         title='New Pitch'
