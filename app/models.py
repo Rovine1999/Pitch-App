@@ -26,7 +26,7 @@ class Pitches(db.Model):
 
     @classmethod
     def get_pitches(cls,cate):
-        pitch = Pitches.query.filter_by(category=cate).all()
+        pitch = Pitches.query.filter_by(category=category).all()
         return pitch
 
     def __repr__(self):
