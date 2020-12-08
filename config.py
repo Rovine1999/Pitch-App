@@ -3,22 +3,22 @@ import os
 class Config:
 
     
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY='rovi123'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SENDER_EMAIL = 'akinyisydney705@gmail.com'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    MAIL_USERNAME ="rovinewanjala99@gmail.com"
+    MAIL_PASSWORD ="rovine5999"
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
 
 class ProdConfig(Config):
-   SQLALCHEMY_DATABASE_URL = os.environ.get("DATABASE_URL")
+   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
+
 
 
 
