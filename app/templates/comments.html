@@ -8,7 +8,7 @@
 {% block content %}
 <body >
 <br><br> <br>
-<h3 class="text-center" >view new comments </h2>
+<h3 class="text-center" ><u>New Comments</u></h2>
   {% for comm in comment[::-1] %}
   <div class="container">
     <div class="row">
@@ -18,10 +18,10 @@
         <div class="card-groups">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">{{comment.author}}</h4>
-              <p class="card-text">{{comment.comment}}.</p>
+              <h4 class="card-title">{{comm.author}}</h4>
+              <p class="card-text">{{comm.comment}}.</p>
             </div>
-            <div class="card-footer bg-transparent border-success"><small>Publish date:{{comment.date_posted.strftime('%Y-%m-%d')}}</small></div>
+            <div class="card-footer bg-transparent border-success"><small>Published on:{{comm.date_posted.strftime('%d-%m-%Y')}}</small></div>
           </div>
         </div>
       </div>

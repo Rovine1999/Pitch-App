@@ -40,14 +40,14 @@ def new_pitch():
 
     return render_template('new_pitch.html',form= form)
 
-@main.route('/categories/<category1>')
+@main.route('/categories/<category>')
 def category(category):
     '''
     function to return the pitches by category
     '''
     category = Pitches.get_pitches(category)
     # print(category)
-    title = f'{category1}'
+    title = f'{category}'
     return render_template('categories.html',title = title, category = category)
 
 @main.route('/user/<uname>')
@@ -98,9 +98,9 @@ def comment(id):
     function to return the comments
     '''
     comment =Comments.get_comment(id)
-    print(comment)
+    # print(comment)
     title = 'comments'
-    return render_template('comments.html',comment = comments,title = title)
+    return render_template('comments.html',comment = comment,title = title)
 
 @main.route('/new_comment/<int:pitches_id>', methods = ['GET', 'POST'])
 @login_required
@@ -117,4 +117,4 @@ def new_comment(pitches_id):
 
         return redirect(url_for('main.index'))
     title='New Pitch'
-    return render_template('new_comment.html',title=title,comment_form = form,pitches_id=pitches_id)
+    return render_template('new_comments.html',title=title,comment_form = form,pitches_id=pitches_id)
