@@ -4,7 +4,7 @@ class Config:
 
     
     SECRET_KEY='rovi123'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine5999@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 #  email configurations
@@ -17,16 +17,16 @@ class Config:
     SIMPLEMDE_USE_CDN = True
 
 class ProdConfig(Config):
-   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
+   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine5999@localhost/pitch'
 
 
 
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine5999@localhost/pitch'
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine1999@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine5999@localhost/pitch'
     DEBUG = True
 
 config_options = {
