@@ -118,3 +118,4 @@ def new_comment(pitches_id):
         return redirect(url_for('main.index'))
     title='New Pitch'
     return render_template('new_comments.html',title=title,comment_form = form,pitches_id=pitches_id)
+
