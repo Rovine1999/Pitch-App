@@ -1,5 +1,5 @@
 #### BY
-#### Rovine Sydney Wanjala, 20/11/2020
+#### Rovine Sydney Wanjala, 8/12/2020
 ## Description
 Application that allows users to use that one minute wisely to pitch and also allows other users to vote on them and leave comments to give their feedback on them.
 ## Setup/Installation Requirements
