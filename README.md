@@ -1,7 +1,7 @@
 #### BY
 #### Rovine Sydney Wanjala, 20/11/2020
 ## Description
-Application that enable the user to create many accounts with different passwords and save them, each account having different passwords.
+Application that allows users to use that one minute wisely to pitch and also allows other users to vote on them and leave comments to give their feedback on them.
 ## Setup/Installation Requirements
 To install this application, go to terminal and clone using the link:https://github.com/Rovine1999/Pitch-App.git to run on your machine.
 
