@@ -8,11 +8,13 @@ class Config:
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 #  email configurations
-    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME ="rovinewanjala99@gmail.com"
-    MAIL_PASSWORD ="rovine5999"
+    MAIL_USERNAME='rovinewanjala99@gmail.com'
+    SQLALCHEMY_DATABASE_URI ='DATABASE_URL'
+    MAIL_PASSWORD ='rovine1999'
+    SENDER_EMAIL = 'rovinewanjala99@gmail.com'
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
 

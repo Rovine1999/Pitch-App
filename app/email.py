@@ -3,9 +3,11 @@ from flask import render_template
 from . import mail
 
 subject_pref='WELCOME TO PITCHES'
-sender_email ='akinyisydney705@gmail.com'
+
 
 def mail_message(subject,template,to,**kwargs):
+    sender_email ='rovinewanjala99@gmail.com'
+    
     email = Message(subject, sender=sender_email, recipients=[to])
     email.body= render_template(template + ".txt",**kwargs)
     email.html = render_template(template + ".html",**kwargs)

@@ -4,7 +4,7 @@ from app.models import Pitches,Role,User
 from flask_migrate import Migrate, MigrateCommand
 
 
-app = create_app('production')
+app = create_app('development')
 
 
 
