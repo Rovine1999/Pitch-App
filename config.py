@@ -13,7 +13,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME='rovinewanjala99@gmail.com'
     SQLALCHEMY_DATABASE_URI ='DATABASE_URL'
-    MAIL_PASSWORD ='rovine1999'
+    MAIL_PASSWORD ='Rovine1999'
     SENDER_EMAIL = 'rovinewanjala99@gmail.com'
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
@@ -25,10 +25,10 @@ class ProdConfig(Config):
 
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine5999@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:Rovine1999@localhost/pitch'
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:rovine5999@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:Rovine1999@localhost/pitch'
     DEBUG = True
 
 config_options = {
